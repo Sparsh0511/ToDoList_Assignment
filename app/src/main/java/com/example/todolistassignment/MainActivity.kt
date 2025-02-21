@@ -63,15 +63,12 @@ class MainActivity : AppCompatActivity(), ToDoItemClickListener {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.filteredTasks.collect {
+                viewModel.todoList.collect {
                     adapter.list = it
                     adapter.notifyDataSetChanged()
                 }
             }
         }
-
-
-        setTopAppBarItemClick()
 
 
     }
@@ -97,51 +94,6 @@ class MainActivity : AppCompatActivity(), ToDoItemClickListener {
                 dialog.dismiss() // Dismiss the dialog
             }
             .show()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.filter_menu, menu)
-        return true
-    }
-
-    fun setTopAppBarItemClick() {
-        binding.topAppBar.setOnMenuItemClickListener {menuItem ->
-            when (menuItem.itemId) {
-                R.id.action_all -> {
-                    Log.i("DATA", "all")
-                    viewModel.setFilter(FilterType.ALL)
-                    true
-                }
-                R.id.action_completed -> {
-                    viewModel.setFilter(FilterType.COMPLETED)
-                    true
-                }
-                R.id.action_uncompleted -> {
-                    viewModel.setFilter(FilterType.UNCOMPLETED)
-                    true
-                }
-                else -> super.onOptionsItemSelected(menuItem)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_all -> {
-                Log.i("DATA", "all")
-                viewModel.setFilter(FilterType.ALL)
-                true
-            }
-            R.id.action_completed -> {
-                viewModel.setFilter(FilterType.COMPLETED)
-                true
-            }
-            R.id.action_uncompleted -> {
-                viewModel.setFilter(FilterType.UNCOMPLETED)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 

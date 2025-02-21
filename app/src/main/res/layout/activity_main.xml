@@ -36,26 +36,11 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             app:title="@string/app_name"
-            app:menu="@menu/filter_menu"
             android:background="@color/md_theme_primaryContainer"
             app:titleTextColor="@color/md_theme_onPrimaryContainer"
             />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/filter"
-        app:tint="@color/md_theme_onPrimaryContainer"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:id="@+id/filter"
-        android:contentDescription="@string/filter"
-        />
 
 
 
@@ -65,7 +50,7 @@
         android:id="@+id/itemsList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/addTask"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
